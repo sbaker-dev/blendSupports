@@ -2,9 +2,10 @@ from blendSupports.Nodes.emission_node import create_emission_node
 import bpy
 
 
-def make_axis(colour, height_end, x_min, x_max, width=0.01):
+def make_axis(colour, height_end, x_min, x_max, x_axis_offset, width=0.01):
     """
     Creates the horizontal and vertical axis for tables
+
 
     :param colour: Axis colour
 
@@ -16,6 +17,9 @@ def make_axis(colour, height_end, x_min, x_max, width=0.01):
 
     :param x_max: Max value of x
     :type x_max: float
+
+    :param x_axis_offset: Vertical x axis offset
+    :type x_axis_offset: float
 
     :param width: Width of the axis
     :type width: float
@@ -34,10 +38,10 @@ def make_axis(colour, height_end, x_min, x_max, width=0.01):
     # 4 verts made with XYZ coords
     verts = [
         # Vertical axis
-        (width / 2, 0, -width),
-        (width / 2, height_end, -width),
-        (-width / 2, height_end, -width),
-        (-width / 2, 0, -width),
+        (width / 2 + x_axis_offset, 0, -width),
+        (width / 2 + x_axis_offset, height_end, -width),
+        (-width / 2 + x_axis_offset, height_end, -width),
+        (-width / 2 + x_axis_offset, 0, -width),
 
         # Horizontal axis
         (x_max, height_end, -width),
