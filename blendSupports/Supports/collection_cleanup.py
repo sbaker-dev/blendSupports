@@ -8,7 +8,7 @@ def collection_cleanup(collection_name):
     Source: https://blender.stackexchange.com/questions/153713/removing-all-meshes-from-a-collection-with-python
 
     :param collection_name: Name of the collection iterate through
-    :return:
+    :return: Nothing, delete the objects requested then stop
     """
     # Cleanup the collection
     collection = bpy.data.collections[collection_name]
