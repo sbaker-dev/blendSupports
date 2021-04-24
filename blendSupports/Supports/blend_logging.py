@@ -8,7 +8,7 @@ class BlendLogger:
 
     def write_to_log(self, msg):
         """Write and flush a message to a log"""
-        self.log.write(msg)
+        self.log.write(f"{msg}\n")
         self.log.flush()
 
     def close(self):
