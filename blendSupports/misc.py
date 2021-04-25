@@ -1,7 +1,7 @@
-def convert_colour(str_of_tuple):
-    """Convert string representation of a rgba 0-1 scalar back to a tuple of floats"""
+def tuple_convert(str_of_tuple, convert_type=float):
+    """Convert string representations of a tuple of floats back a tuple of convert_type"""
     split_values = str_of_tuple.split(",")
-    return tuple([float(vv.replace("(", "").replace(")", "")) for vv in split_values])
+    return tuple([convert_type(vv.replace("(", "").replace(")", "")) for vv in split_values])
 
 
 def set_values(value, rounding_value):
