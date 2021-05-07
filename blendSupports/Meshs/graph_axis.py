@@ -33,7 +33,6 @@ def make_graph_axis(colour, x_end, y_end, width=0.3, bound=0.2, name="Axis", col
     """
     obj, mesh = make_mesh(name, colour, collection)
 
-
     verts = [
         (-bound, y_end, 0),
         (-bound, -(width + bound), 0),
