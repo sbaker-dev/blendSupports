@@ -43,3 +43,5 @@ def make_text(object_name, bound, y_mean_val, text, height_iterator, object_colo
     # Scale it relative to all other elements
     bpy.ops.transform.resize(value=(height_iterator, height_iterator, height_iterator))
     bpy.ops.object.select_all(action='DESELECT')
+
+    return obj
