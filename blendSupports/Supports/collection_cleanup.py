@@ -45,4 +45,4 @@ def collection_cleanup(collection_name, save_camera=True):
 
         # Warn users if we find mesh type we have not handled
         else:
-            print("Unknown mesh type: cannot delete")
+            print(f"Unknown mesh type of {type(mesh)}: cannot delete")
