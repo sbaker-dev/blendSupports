@@ -1,5 +1,4 @@
 from blendSupports.Meshs.mesh_ref import make_mesh
-import math
 import bpy
 
 
