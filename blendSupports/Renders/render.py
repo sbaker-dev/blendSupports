@@ -47,6 +47,3 @@ def render_scene(camera_position, write_directory, write_name, engine="CYCLES", 
     if save_file:
         # Save the blend file for manual manipulation later
         bpy.ops.wm.save_as_mainfile(filepath=f"{write_directory}/{write_name}.blend")
-
-
-render_scene((0, 0, 2), r"C:\Users\Samuel\PycharmProjects\blendSupports\Tests", "TR")
