@@ -1,8 +1,3 @@
-def tuple_convert(str_of_tuple, convert_type=float):
-    """Convert string representations of a tuple of floats back a tuple of convert_type"""
-    split_values = str_of_tuple.split(",")
-    return tuple([convert_type(vv.replace("(", "").replace(")", "")) for vv in split_values])
-
 
 def set_values(value, rounding_value):
     """
