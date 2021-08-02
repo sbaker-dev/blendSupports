@@ -16,11 +16,11 @@ class CameraTypeError(Exception):
 
 
 def render_scene(camera_position, write_directory, write_name, engine="CYCLES", x_resolution=1080,
-                 y_resolution=1080, camera_type="ORTHO", camera_scale=5, save_file=True):
+                 y_resolution=1080, camera_type="ORTHO", camera_scale=5, save_file=True, film_transparent=True,
+                 file_type="png"):
 
     if engine.upper() not in ["CYCLES", "BLENDER_EEVEE"]:
         raise EngineInvalidError(engine.upper())
-
     bpy.context.scene.render.engine = engine
 
     # Set the output resolution and camera scale
@@ -28,20 +28,19 @@ def render_scene(camera_position, write_directory, write_name, engine="CYCLES", 
     bpy.context.scene.render.resolution_y = int(y_resolution)
 
     # Set the camera position and scale
-    camera = bpy.data.objects["Camera"]
-
     if camera_type.upper() not in ['PANO', "ORTHO", "PERSP"]:
         raise CameraTypeError(camera_type.upper())
 
+    camera = bpy.data.objects["Camera"]
     camera.data.type = camera_type.upper()
     camera.location = tuple_convert(camera_position)
     if camera_type == "ORTHO":
         camera.data.ortho_scale = float(camera_scale)
 
     # Render the scene
-    bpy.context.scene.render.filepath = str(Path(write_directory, f"{write_name}.png").absolute())
+    bpy.context.scene.render.filepath = str(Path(write_directory, f"{write_name}.{file_type}").absolute())
     bpy.context.scene.eevee.use_gtao = True
-    bpy.context.scene.render.film_transparent = True
+    bpy.context.scene.render.film_transparent = film_transparent
     bpy.ops.render.render(write_still=True)
 
     if save_file:
