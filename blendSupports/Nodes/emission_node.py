@@ -1,7 +1,7 @@
 import bpy
 
 
-def create_emission_node(obj, colour, strength=1.0):
+def create_emission_node(obj, colour, strength=1.0, custom_name=None):
     """
     Create an emission node for this object
 
@@ -10,18 +10,25 @@ def create_emission_node(obj, colour, strength=1.0):
 
 
     :param obj: The current blender object
-
     :param colour: RGBA colour
 
     :param strength: Intensity of the emission node
     :type strength: float
 
+    :param custom_name: An custom name to use instead of the object
+    :type custom_name: str | None
+
     :return: Nothing, make the emission node then stop
     :rtype: None
     """
 
+    # Set custom names to avoid override if required
+    if custom_name:
+        mat_name = custom_name
+    else:
+        mat_name = obj.name
+
     # Test if material exists, If it does not exist, create it:
-    mat_name = obj.name
     mat = (bpy.data.materials.get(mat_name) or
            bpy.data.materials.new(mat_name))
 
